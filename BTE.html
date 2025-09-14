@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerus Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Epunda+Slab:wght@700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.menu {
+    width: calc(100% - 20px);
+    height: 60px;
+    background: rgba(128,128,128,0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 30px;
+    font-weight: 700;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.menu a:hover { color: #ccc; }
+
+.content {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding-bottom: 100px;
+}
+
+.welcome-text {
+    font-family: 'Epunda Slab', serif;
+    font-weight: 700;
+    font-size: 72px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+}
+
+.description {
+    font-family: 'Epunda Slab', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.footer {
+    font-family: 'Epunda Slab', serif;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.page { display: none; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; flex: 1; }
+.active { display: flex; }
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 64px;
+    width: 100%;
+    justify-items: center;
+}
+
+.game-button {
+    background-color: #222;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-button img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.game-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
+}
+
+@media (max-width: 600px) {
+    .welcome-text { font-size: 48px; }
+    .description { font-size: 16px; padding: 0 10px; }
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="menu">
+    <a id="homeLink">Home</a>
+    <a id="gamesLink">G4m3s</a>
+</div>
+
+<div id="homePage" class="content page active">
+    <div class="welcome-text">Welcome To Aerus</div>
+    <div class="description">This Website Is Full Of Stuff I Wont Say Because This Website Would Be Blocked By Securly, Lightspeed, ETC. So If Your New, Please Enjoy Yourself By Searching What You Wanna Do On The Menu.</div>
+</div>
+
+<div id="gamesPage" class="content page">
+    <div class="welcome-text">G4m3s</div>
+    <div class="description">In Here We Got G4m3s If You Know What We Mean!</div>
+    
+    <div class="game-grid">
+        <div class="game-button" id="crazyCarsBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/331.png" alt="Crazy Cars">
+            <div>Crazy Cars</div>
+        </div>
+        <div class="game-button" id="lolBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/58.png" alt="1v1.lol">
+            <div>1v1.lol</div>
+        </div>
+        <div class="game-button" id="aswcBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/435.png" alt="A Small World Cup">
+            <div>A Small World Cup</div>
+        </div>
+        <div class="game-button" id="angryBirdsBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/63.png" alt="Angry Birds">
+            <div>Angry Birds</div>
+        </div>
+        <div class="game-button" id="bouncemastersBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/437.png" alt="Bouncemasters">
+            <div>Bouncemasters</div>
+        </div>
+        <div class="game-button" id="candyCrushBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/171.png" alt="Candy Crush">
+            <div>Candy Crush</div>
+        </div>
+        <div class="game-button" id="drawJoustBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/387.png" alt="Draw Joust">
+            <div>Draw Joust</div>
+        </div>
+        <div class="game-button" id="driveMadBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/35.png" alt="Drive Mad">
+            <div>Drive Mad</div>
+        </div>
+        <div class="game-button" id="rainbowObbyBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/307.png" alt="Rainbow Obby">
+            <div>Rainbow Obby</div>
+        </div>
+        <!-- New Game: BLOODMONEY! -->
+        <div class="game-button" id="bloodMoneyBtn">
+            <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/454.png" alt="BLOODMONEY!">
+            <div>BLOODMONEY!</div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">Owned By DX.ZY</div>
+
+<script>
+const homeLink = document.getElementById('homeLink');
+const gamesLink = document.getElementById('gamesLink');
+const homePage = document.getElementById('homePage');
+const gamesPage = document.getElementById('gamesPage');
+
+homeLink.addEventListener('click', () => {
+    homePage.classList.add('active');
+    gamesPage.classList.remove('active');
+});
+gamesLink.addEventListener('click', () => {
+    gamesPage.classList.add('active');
+    homePage.classList.remove('active');
+});
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+});
+
+class Particle {
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 1;
+        this.speedY = (Math.random() - 0.5) * 1;
+        this.alpha = Math.random() * 0.5 + 0.2;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > width || this.y < 0 || this.y > height){ this.reset(); }
+    }
+    draw() {
+        ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+const particlesArray = [];
+for(let i=0; i<100; i++){ particlesArray.push(new Particle()); }
+
+function animate(){
+    ctx.clearRect(0, 0, width, height);
+    particlesArray.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+animate();
+
+function openGame(url) {
+    const newTab = window.open('about:blank', '_blank');
+    newTab.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title>about:blank</title>
+            <style>
+                body { margin:0; padding:0; overflow:hidden; background:#000; display:flex; justify-content:center; align-items:center; height:100vh; }
+                iframe { width:100%; height:100%; border:none; }
+            </style>
+        </head>
+        <body>
+            <iframe src="${url}"></iframe>
+        </body>
+        </html>
+    `);
+    newTab.focus();
+}
+
+document.getElementById('crazyCarsBtn').addEventListener('click', () => {
+    openGame('https://rawcdn.githack.com/bubbls/UGS-Assets/df3f505bea1fcfbe3f7e0e64c384e9ec15b47ee1/crazy%20cars/index.html#topvaz');
+});
+document.getElementById('lolBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/1v1/1v1.LoL.html');
+});
+document.getElementById('aswcBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/aswc/ASWC.html');
+});
+document.getElementById('angryBirdsBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/AB/AB.html');
+});
+document.getElementById('bouncemastersBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/BMa/Bouncemasters.html');
+});
+document.getElementById('candyCrushBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/CandyC/CC.html');
+});
+document.getElementById('drawJoustBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/DJ/DJ.html');
+});
+document.getElementById('driveMadBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/DM/DM.html');
+});
+document.getElementById('rainbowObbyBtn').addEventListener('click', () => {
+    openGame('http://yvxxvy.github.io/RO/RO.html');
+});
+document.getElementById('bloodMoneyBtn').addEventListener('click', () => {
+    openGame('https://yvxxvy.github.io/BMY/BMY.html');
+});
+</script>
+</body>
+</html>
